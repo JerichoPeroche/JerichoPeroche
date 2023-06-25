@@ -1,98 +1,71 @@
-// Copyright 2013 The Flutter Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:path_provider_linux/path_provider_linux.dart';
+import 'package:provider/provider.dart';
+
+import 'fooderlich_theme.dart';
+import 'models/models.dart';
+import 'navigation/app_route_parser.dart';
+import 'navigation/app_router.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const Fooderlich());
 }
 
-/// Sample app
-class MyApp extends StatefulWidget {
-  /// Default Constructor
-  const MyApp({super.key});
+class Fooderlich extends StatefulWidget {
+  const Fooderlich({Key? key}) : super(key: key);
 
   @override
-  State<MyApp> createState() => _MyAppState();
+  _FooderlichState createState() => _FooderlichState();
 }
 
-class _MyAppState extends State<MyApp> {
-  String? _tempDirectory = 'Unknown';
-  String? _downloadsDirectory = 'Unknown';
-  String? _appSupportDirectory = 'Unknown';
-  String? _documentsDirectory = 'Unknown';
-  final PathProviderLinux _provider = PathProviderLinux();
+class _FooderlichState extends State<Fooderlich> {
+  final _groceryManager = GroceryManager();
+  final _profileManager = ProfileManager();
+  final _appStateManager = AppStateManager();
+  final routeParser = AppRouteParser();
+  late AppRouter _appRouter;
 
   @override
   void initState() {
     super.initState();
-    initDirectories();
-  }
-
-  // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> initDirectories() async {
-    String? tempDirectory;
-    String? downloadsDirectory;
-    String? appSupportDirectory;
-    String? documentsDirectory;
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    try {
-      tempDirectory = await _provider.getTemporaryPath();
-    } on PlatformException {
-      tempDirectory = 'Failed to get temp directory.';
-    }
-    try {
-      downloadsDirectory = await _provider.getDownloadsPath();
-    } on PlatformException {
-      downloadsDirectory = 'Failed to get downloads directory.';
-    }
-
-    try {
-      documentsDirectory = await _provider.getApplicationDocumentsPath();
-    } on PlatformException {
-      documentsDirectory = 'Failed to get documents directory.';
-    }
-
-    try {
-      appSupportDirectory = await _provider.getApplicationSupportPath();
-    } on PlatformException {
-      appSupportDirectory = 'Failed to get documents directory.';
-    }
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) {
-      return;
-    }
-
-    setState(() {
-      _tempDirectory = tempDirectory;
-      _downloadsDirectory = downloadsDirectory;
-      _appSupportDirectory = appSupportDirectory;
-      _documentsDirectory = documentsDirectory;
-    });
+    _appRouter = AppRouter(
+      appStateManager: _appStateManager,
+      groceryManager: _groceryManager,
+      profileManager: _profileManager,
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Path Provider Linux example app'),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => _groceryManager),
+        ChangeNotifierProvider(
+          create: (context) => _appStateManager,
         ),
-        body: Center(
-          child: Column(
-            children: <Widget>[
-              Text('Temp Directory: $_tempDirectory\n'),
-              Text('Documents Directory: $_documentsDirectory\n'),
-              Text('Downloads Directory: $_downloadsDirectory\n'),
-              Text('Application Support Directory: $_appSupportDirectory\n'),
-            ],
-          ),
-        ),
+        ChangeNotifierProvider(
+          create: (context) => _profileManager,
+        )
+      ],
+      child: Consumer<ProfileManager>(
+        builder: (context, profileManager, child) {
+          ThemeData theme;
+          if (profileManager.darkMode) {
+            theme = FooderlichTheme.dark();
+          } else {
+            theme = FooderlichTheme.light();
+          }
+
+          return MaterialApp.router(
+            theme: theme,
+            title: 'STARBUCKS',
+            debugShowCheckedModeBanner: false,
+            backButtonDispatcher: RootBackButtonDispatcher(),
+            // 1
+            routeInformationParser: routeParser,
+            // 2
+            routerDelegate: _appRouter,
+          );
+        },
       ),
     );
   }

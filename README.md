@@ -1,9 +1,5 @@
-# Platform Implementation Test App
+# Launch Screen Assets
 
-This is a test app for manual testing and automated integration testing
-of this platform implementation. It is not intended to demonstrate actual use of
-this package, since the intent is that plugin clients use the app-facing
-package.
+You can customize the launch screen with your own desired assets by replacing the image files in this directory.
 
-Unless you are making changes to this implementation package, this example is
-very unlikely to be relevant.
+You can also do it by opening your Flutter project's Xcode project with `open ios/Runner.xcworkspace`, selecting `Runner/Assets.xcassets` in the Project Navigator and dropping in the desired images.

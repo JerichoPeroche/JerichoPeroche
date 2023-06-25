@@ -1,109 +1,81 @@
-## 2.1.7
+## 3.0.5
 
-* Adds compatibility with `win32` 5.x.
-* Updates minimum supported SDK version to Flutter 3.3/Dart 2.18.
+* Sets a cmake_policy compatibility version to fix build warnings.
 
-## 2.1.6
-
-* Adds compatibility with `win32` 4.x.
-
-## 2.1.5
+## 3.0.4
 
 * Clarifies explanation of endorsement in README.
 * Aligns Dart and Flutter SDK constraints.
 
-## 2.1.4
+## 3.0.3
 
 * Updates links for the merge of flutter/plugins into flutter/packages.
 * Updates minimum Flutter version to 3.0.
 
-## 2.1.3
+## 3.0.2
 
+* Updates code for stricter lint checks.
 * Updates minimum Flutter version to 2.10.
-* Adds compatibility with `package:win32` 3.x.
 
-## 2.1.2
-
-* Fixes avoid_redundant_argument_values lint warnings and minor typos.
-
-## 2.1.1
-
-* Updates dependency version of `package:win32` to 2.1.0.
-
-## 2.1.0
-
-* Upgrades `package:ffi` dependency to 2.0.0.
-* Added support for unicode encoded VERSIONINFO.
-* Minor fixes for new analysis options.
-
-## 2.0.6
+## 3.0.1
 
 * Fixes library_private_types_in_public_api, sort_child_properties_last and use_key_in_widget_constructors
   lint warnings.
 
-## 2.0.5
+## 3.0.0
 
-* Removes dependency on `meta`.
+* Changes the major version since, due to a typo in `default_package` in
+  existing versions of `url_launcher`, requiring Dart registration in this
+  package is in practice a breaking change.
+  * Does not include any API changes; clients can allow both 2.x or 3.x.
 
 ## 2.0.4
 
-* Removed obsolete `pluginClass: none` from pubpsec.
+* **\[Retracted\]** Switches to an in-package method channel implementation.
 
 ## 2.0.3
 
-* Updated installation instructions in README.
+* Updates code for new analysis options.
+* Fix minor memory leak in Linux url_launcher tests.
+* Fixes canLaunch detection for URIs addressing on local or network file systems
 
 ## 2.0.2
 
-* Add `implements` to pubspec.yaml.
-* Add `registerWith()` to the Dart main class.
+* Replaced reference to `shared_preferences` plugin with the `url_launcher` in the README.
 
 ## 2.0.1
 
-* Fix a crash when a known folder can't be located.
+* Updated installation instructions in README.
 
 ## 2.0.0
 
-* Migrate to null safety
+* Migrate to null safety.
+* Update the example app: remove the deprecated `RaisedButton` and `FlatButton` widgets.
+* Fix outdated links across a number of markdown files ([#3276](https://github.com/flutter/plugins/pull/3276))
+* Set `implementation` in pubspec.yaml
 
-## 0.0.4+4
+## 0.0.2+1
 
 * Update Flutter SDK constraint.
 
-## 0.0.4+3
-
-* Remove unused `test` dependency.
-* Update Dart SDK constraint in example.
-
-## 0.0.4+2
-
-* Check in windows/ directory for example/
-
-## 0.0.4+1
-
-* Add getPath to the stub, so that the analyzer won't complain about
-  fakes that override it.
-* export 'folders.dart' rather than importing it, since it's intended to be
-  public.
-
-## 0.0.4
-
-* Move the actual implementation behind a conditional import, exporting
-  a stub for platforms that don't support FFI. Fixes web builds in
-  projects with transitive dependencies on path_provider.
-
-## 0.0.3
-
-* Add missing `pluginClass: none` for compatibilty with stable channel.
-
 ## 0.0.2
 
-* README update for endorsement.
-* Changed getApplicationSupportPath location.
-* Removed getLibraryPath.
+* Update integration test examples to use `testWidgets` instead of `test`.
+
+## 0.0.1+4
+
+* Update Dart SDK constraint in example.
+
+## 0.0.1+3
+
+* Add a missing include.
 
 ## 0.0.1+2
 
-* The initial implementation of path_provider for Windows
-  * Implements getTemporaryPath, getApplicationSupportPath, getLibraryPath,
-    getApplicationDocumentsPath and getDownloadsPath.
+* Check in linux/ directory for example/
+
+# 0.0.1+1
+* README update for endorsement by url_launcher.
+
+# 0.0.1
+* The initial implementation of url_launcher for Linux
