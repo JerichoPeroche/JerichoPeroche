@@ -1,0 +1,74 @@
+{
+    "feed": [
+        {
+            "id": "1",
+            "profileImageUrl": "assets/profile_pics/pr1.png",
+            "comment": "CHICKEN BUCKET",
+            "foodPictureUrl": "card_carrot.png",
+            "timestamp": "₱ 599.00"
+        },
+        {
+            "id": "2",
+            "profileImageUrl": "assets/profile_pics/pr2.png",
+            "comment": "CHICKEN BUCKET FAMILY",
+            "foodPictureUrl": "card_carrot.png",
+            "timestamp": "₱ 699.00"
+        },
+        {
+            "id": "3",
+            "profileImageUrl": "assets/profile_pics/pr3.png",
+            "comment": "LARGE FRIES",
+            "foodPictureUrl": "card_carrot.png",
+            "timestamp": "₱ 69.00"
+        },
+        {
+            "id": "4",
+            "profileImageUrl": "assets/profile_pics/pr4.png",
+            "comment": "PALABOK PAN",
+            "foodPictureUrl": "card_carrot.png",
+            "timestamp": "₱ 349.00"
+        },
+        {
+            "id": "5",
+            "profileImageUrl": "assets/profile_pics/pr5.png",
+            "comment": "BURGER STEAK FAMILY",
+            "foodPictureUrl": "card_carrot.png",
+            "timestamp": "₱ 249.00"
+        },
+        {
+            "id": "6",
+            "profileImageUrl": "assets/profile_pics/pr6.png",
+            "comment": "BURGER W/FRIES",
+            "foodPictureUrl": "card_carrot.png",
+            "timestamp": "₱ 299.00"
+        },
+        {
+            "id": "7",
+            "profileImageUrl": "assets/profile_pics/pr7.png",
+            "comment": "ICE TEA",
+            "foodPictureUrl": "card_carrot.png",
+            "timestamp": "₱ 29.00"
+        },
+        {
+            "id": "8",
+            "profileImageUrl": "assets/profile_pics/pr8.png",
+            "comment": "COKE",
+            "foodPictureUrl": "card_carrot.png",
+            "timestamp": "₱ 29.00"
+        },
+        {
+            "id": "9",
+            "profileImageUrl": "assets/profile_pics/pr9.png",
+            "comment": "PINEAPPLE JUICE",
+            "foodPictureUrl": "card_carrot.png",
+            "timestamp": "₱ 29.00"
+        },
+        {
+            "id": "10",
+            "profileImageUrl": "assets/profile_pics/pr10.png",
+            "comment": "SPRITE",
+            "foodPictureUrl": "card_carrot.png",
+            "timestamp": "₱ 29.00"
+        }
+    ]
+}
